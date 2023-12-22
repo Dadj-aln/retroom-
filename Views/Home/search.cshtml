@@ -1,0 +1,115 @@
+﻿@{ Layout = null;}
+@model IEnumerable<Restaurant>
+<html lang="fa" dir="rtl">
+
+<head dir="rtl">
+    <title>retroom</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        div {
+            direction: rtl;
+        }
+        /* Additional CSS styling specific to this view */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            max-width: 80%; /* Adjust as needed */
+            width: 400px; /* Adjust as needed */
+        }
+
+        .signup {
+            position: absolute;
+            top: 10%;
+            left: 3%;
+            padding: 10px; /* Adjust as needed */
+        }
+
+            .signup a {
+                display: inline-block;
+                padding: 10px; /* Adjust as needed */
+                background-color: greenyellow; /* Default background color */
+                color: darkblue; /* Text color */
+                text-decoration: none; /* Remove underline */
+                transition: background-color 0.3s ease; /* Smooth transition effect */
+            }
+
+                .signup a:hover {
+                    background-color: #0056b3; /* Background color on hover */
+                }
+
+        .Login {
+            position: absolute;
+            top: 15%;
+            left: 3%;
+            padding: 10px;
+            box-sizing: border-box;
+            /* Adjust as needed */
+        }
+
+            .Login a {
+                display: inline-block;
+                padding: 10px 18px; /* Adjust as needed */
+                background-color: greenyellow; /* Default background color */
+                color: darkblue; /* Text color */
+                text-decoration: none; /* Remove underline */
+                transition: background-color 0.3s ease; /* Smooth transition effect */
+                margin-right: 26px;
+            }
+
+                .Login a:hover {
+                    background-color: #0056b3; /* Background color on hover */
+                }
+    </style>
+</head>
+
+<body dir="rtl">
+    @await Component.InvokeAsync("NavBar")
+    <div class="signup"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="SignUp">ثبت نام</a></div>
+    <br />
+    <br />
+    <div class="Login"><a asp-action="Login" asp-controller="Home">ورود</a></div>
+    @foreach (var r in Model)
+    {
+        <div class="container" dir="rtl">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div class="card mb-3">
+                        @if (r.ImagePath != null)
+                        {
+                            <img src="@r.ImagePath" alt="Card Image" class="card-img-top">
+
+                        }
+
+                        @if (r.ImagePath == null)
+                        {<img src="https://via.placeholder.com/300x200" alt="Card Image" class="card-img-top">}
+
+                        <div class="card-body">
+                            <h5 class="card-title">@r.Name</h5>
+                            <p class="card-text">@r.City</p>
+                            <p class="card-text">@r.Description</p>
+
+                            <a asp-action="FullSpecs" asp-controller="Home" asp-route-ID="@r.ID" class="btn btn-primary">جزئیات بیشتر</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    }
+
+    <!-- Bootstrap JS and Popper.js for modal functionality -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>

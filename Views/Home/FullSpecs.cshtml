@@ -1,0 +1,44 @@
+﻿@model RestaurantCommentViewModel
+
+
+
+                
+
+
+            <h5 class="modal-title">@Model.restaurant.Name</h5>
+            <div class="modal-body">
+                <p>@Model.restaurant.Province</p>
+                <p>@Model.restaurant.City</p>
+                <p>@Model.restaurant.Phone</p>
+                <p>@Model.restaurant.Address</p>
+                <p>@Model.restaurant.Description</p>
+                <br />
+                <h4>نظرات</h4>
+                <table class="table">
+                <thead>
+                    <tr>
+                        <th>نام</th>
+                        <th>نظر</th>
+                        <th>کیفیت</th>
+                        <th>طعم</th>
+                        <th>نظافت</th>
+                        <th>ارزش خرید</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var comment in Model.Comments)
+                    {
+                        <tr>
+                            <td>@comment.Person.Fullname</td>
+                            <td>@comment.CommentContent</td>
+                            <td>@comment.Quality</td>
+                            <td>@comment.Taste</td>
+                            <td>@comment.Clean</td>
+                            <td>@comment.PriceWorth</td>
+                        </tr>
+                    }
+                </tbody>
+                </table>
+
+
+            </div>

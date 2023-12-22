@@ -1,0 +1,42 @@
+﻿@model Comment
+
+
+<h2>Submit Comment</h2>
+
+<form asp-action="CommentProcess" method="post">
+    <!-- Other form fields if needed -->
+
+    <div class="form-group">
+        <label asp-for="CommentContent"></label>
+        <textarea asp-for="CommentContent" class="form-control"></textarea>
+        <span asp-validation-for="CommentContent" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Quality"></label>
+        <input asp-for="Quality" class="form-control" />
+        <span asp-validation-for="Quality" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Taste"></label>
+        <input asp-for="Taste" class="form-control" />
+        <span asp-validation-for="Taste" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Clean"></label>
+        <input asp-for="Clean" class="form-control" />
+        <span asp-validation-for="Clean" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PriceWorth"></label>
+        <input asp-for="PriceWorth" class="form-control" />
+        <span asp-validation-for="PriceWorth" class="text-danger"></span>
+    </div>
+    @*<input type="hidden" name="RestaurantID" value="@TempData["RestaurantID"]" />
+    <input type="hidden" name="PersonID" value="@TempData["userID"]" />*@
+
+    <button type="submit" class="btn btn-primary">Submit Comment</button>
+</form>

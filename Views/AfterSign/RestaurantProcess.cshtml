@@ -1,0 +1,28 @@
+﻿@model Restaurant
+
+@{
+    ViewData["Title"] = "Restaurant Details";
+}
+
+<h2>@Model.Name</h2>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Description</dt>
+        <dd class="col-sm-10">@Model.Description</dd>
+
+        <dt class="col-sm-2">Phone</dt>
+        <dd class="col-sm-10">@Model.Phone</dd>
+
+        <dt class="col-sm-2">Province</dt>
+        <dd class="col-sm-10">@Model.Province</dd>
+
+        <dt class="col-sm-2">City</dt>
+        <dd class="col-sm-10">@Model.City</dd>
+
+        <dt class="col-sm-2">Address</dt>
+        <dd class="col-sm-10">@Model.Address</dd>
+    </dl>
+</div>
+
+<a asp-action="Index" asp-controller="AfterSign"  >بازگشت به خانه</a>

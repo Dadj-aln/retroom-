@@ -1,0 +1,107 @@
+﻿@{ 
+Layout = null;
+ }
+
+
+@model MainViewModelHome
+
+<html dir="rtl">
+
+<link href="C:\Users\alito\.nuget\packages\bootstrap\5.3.2\contentFiles\any\any\wwwroot\css\bootstrap.min.css" rel="stylesheet" />
+<link href="C:\Users\alito\.nuget\packages\bootstrap\5.3.2\contentFiles\any\any\wwwroot\css\bootstrap.rtl.min.css" rel="stylesheet" />
+<link href="C:\Users\alito\.nuget\packages\bootstrap\5.3.2\contentFiles\any\any\wwwroot\css\bootstrap.rtl.css" rel="stylesheet" />
+<link href="C:\Users\alito\.nuget\packages\bootstrap\5.3.2\contentFiles\any\any\wwwroot\css\bootstrap.css" rel="stylesheet" />
+<head dir="rtl">
+    <title>retroom</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        .signup {
+            position: absolute;
+            top: 10%;
+            left: 3%;
+            padding: 10px; /* Adjust as needed */
+        }
+
+            .signup a {
+                display: inline-block;
+                padding: 10px; /* Adjust as needed */
+                background-color: greenyellow; /* Default background color */
+                color: darkblue; /* Text color */
+                text-decoration: none; /* Remove underline */
+                transition: background-color 0.3s ease; /* Smooth transition effect */
+            }
+
+                .signup a:hover {
+                    background-color: #0056b3; /* Background color on hover */
+                }
+
+        .Login {
+            position: absolute;
+            top: 15%;
+            left: 3%;
+            padding: 10px;
+            box-sizing: border-box;
+            /* Adjust as needed */
+        }
+
+            .Login a {
+                display: inline-block;
+                padding: 10px 18px; /* Adjust as needed */
+                background-color: greenyellow; /* Default background color */
+                color: darkblue; /* Text color */
+                text-decoration: none; /* Remove underline */
+                transition: background-color 0.3s ease; /* Smooth transition effect */
+                margin-right: 26px;
+            }
+
+                .Login a:hover {
+                    background-color: #0056b3; /* Background color on hover */
+                }
+    </style>
+</head>
+
+<body>
+
+    @await Component.InvokeAsync("NavBar");
+
+    <a class="Login" asp-action="RestaurantRegister" asp-controller="AfterSign">ثبت رستوران</a><br />
+    <a class="signup" asp-action="index" asp-controller="Home">خروج</a>
+
+    @foreach (var r in Model.Restaurant)
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div class="card mb-3">
+                        @if (r.ImagePath != null)
+                        {
+                            <img src="@r.ImagePath" alt="Card Image" class="card-img-top">
+
+                        }
+
+                        @if (r.ImagePath == null)
+                        {<img src="https://via.placeholder.com/300x200" alt="Card Image" class="card-img-top">}
+                        <div class="card-body">
+                            <h5 class="card-title">@r.Name</h5>
+                            <p class="card-text">@r.City</p>
+                            <p class="card-text">@r.Description</p>
+
+                            <a asp-action="FullSpecs" asp-controller="AfterSign" asp-route-ID="@r.ID" class="btn btn-primary">جزئیات بیشتر</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+
+    <!-- Bootstrap JS and Popper.js for modal functionality -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+</body>
+
+</html>
